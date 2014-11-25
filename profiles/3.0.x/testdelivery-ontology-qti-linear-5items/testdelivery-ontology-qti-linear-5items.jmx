@@ -17,8 +17,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">${__P(loopCount,1)}</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(users,64)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rampUpPeriod,60)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(users,256)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUpPeriod,120)}</stringProp>
         <longProp name="ThreadGroup.start_time">1383832331000</longProp>
         <longProp name="ThreadGroup.end_time">1383832331000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
@@ -98,11 +98,6 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
-            <hashTree/>
-            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Random Gaussian Timer" enabled="true">
-              <stringProp name="ConstantTimer.delay">10000</stringProp>
-              <stringProp name="RandomTimer.range">3000</stringProp>
-            </GaussianRandomTimer>
             <hashTree/>
           </hashTree>
         </hashTree>
@@ -200,6 +195,11 @@
                 </elementProp>
               </collectionProp>
             </HeaderManager>
+            <hashTree/>
+            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Random Gaussian Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">10000</stringProp>
+              <stringProp name="RandomTimer.range">3000</stringProp>
+            </GaussianRandomTimer>
             <hashTree/>
           </hashTree>
         </hashTree>
@@ -332,41 +332,6 @@
               <stringProp name="RegexExtractor.match_number">1</stringProp>
             </RegexExtractor>
             <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>false</message>
-                  <threadName>true</threadName>
-                  <dataType>false</dataType>
-                  <encoding>false</encoding>
-                  <assertions>false</assertions>
-                  <subresults>false</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <hostname>true</hostname>
-                  <threadCounts>true</threadCounts>
-                  <sampleCount>true</sampleCount>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/taoDelivery/DeliveryServer/runDeliveryExecution" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
@@ -461,41 +426,6 @@ url = url.replace(&quot;\\/&quot;,&quot;/&quot;);
 vars.put(&quot;QtiTestCompilation&quot;, encodeURIComponent(url));</stringProp>
               <stringProp name="scriptLanguage">javascript</stringProp>
             </BSFPostProcessor>
-            <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Results Tree" enabled="false">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>true</xml>
-                  <fieldNames>false</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <hostname>true</hostname>
-                  <threadCounts>true</threadCounts>
-                  <sampleCount>true</sampleCount>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
             <hashTree/>
           </hashTree>
         </hashTree>
@@ -913,8 +843,8 @@ vars.put(&quot;itemUrl&quot;, itemPath.replace(&quot;\\/&quot;, &quot;/&quot;));
               </HeaderManager>
               <hashTree/>
               <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">15000</stringProp>
-                <stringProp name="RandomTimer.range">10000</stringProp>
+                <stringProp name="ConstantTimer.delay">60000</stringProp>
+                <stringProp name="RandomTimer.range">15000</stringProp>
               </GaussianRandomTimer>
               <hashTree/>
             </hashTree>
@@ -1379,8 +1309,8 @@ vars.put(&quot;itemUrl&quot;, itemPath.replace(&quot;\\/&quot;, &quot;/&quot;));
               </HeaderManager>
               <hashTree/>
               <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Random Gaussian Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">15000</stringProp>
-                <stringProp name="RandomTimer.range">10000</stringProp>
+                <stringProp name="ConstantTimer.delay">60000</stringProp>
+                <stringProp name="RandomTimer.range">15000</stringProp>
               </GaussianRandomTimer>
               <hashTree/>
             </hashTree>
@@ -1845,8 +1775,8 @@ vars.put(&quot;itemUrl&quot;, itemPath.replace(&quot;\\/&quot;, &quot;/&quot;));
               </HeaderManager>
               <hashTree/>
               <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Random Gaussian Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">15000</stringProp>
-                <stringProp name="RandomTimer.range">10000</stringProp>
+                <stringProp name="ConstantTimer.delay">60000</stringProp>
+                <stringProp name="RandomTimer.range">15000</stringProp>
               </GaussianRandomTimer>
               <hashTree/>
             </hashTree>
@@ -2311,8 +2241,8 @@ vars.put(&quot;itemUrl&quot;, itemPath.replace(&quot;\\/&quot;, &quot;/&quot;));
               </HeaderManager>
               <hashTree/>
               <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Random Gaussian Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">15000</stringProp>
-                <stringProp name="RandomTimer.range">10000</stringProp>
+                <stringProp name="ConstantTimer.delay">60000</stringProp>
+                <stringProp name="RandomTimer.range">15000</stringProp>
               </GaussianRandomTimer>
               <hashTree/>
             </hashTree>
@@ -2777,8 +2707,8 @@ vars.put(&quot;itemUrl&quot;, itemPath.replace(&quot;\\/&quot;, &quot;/&quot;));
               </HeaderManager>
               <hashTree/>
               <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Random Gaussian Timer" enabled="true">
-                <stringProp name="ConstantTimer.delay">15000</stringProp>
-                <stringProp name="RandomTimer.range">10000</stringProp>
+                <stringProp name="ConstantTimer.delay">60000</stringProp>
+                <stringProp name="RandomTimer.range">15000</stringProp>
               </GaussianRandomTimer>
               <hashTree/>
             </hashTree>
@@ -2990,8 +2920,40 @@ vars.put(&quot;itemServiceCallId&quot;, encodeURIComponent(url));</stringProp>
             </hashTree>
           </hashTree>
         </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Finish" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="taoDelivery/DeliveryServer/finishDeliveryExecution" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="deliveryExecution" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${DeliveryExecution}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">deliveryExecution</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/taoDelivery/DeliveryServer/finishDeliveryExecution</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
         <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <boolProp name="ResultCollector.error_logging">true</boolProp>
           <objProp>
             <name>saveConfig</name>
             <value class="SampleSaveConfiguration">
@@ -3023,7 +2985,6 @@ vars.put(&quot;itemServiceCallId&quot;, encodeURIComponent(url));</stringProp>
             </value>
           </objProp>
           <stringProp name="filename"></stringProp>
-          <boolProp name="ResultCollector.success_only_logging">true</boolProp>
         </ResultCollector>
         <hashTree/>
         <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
