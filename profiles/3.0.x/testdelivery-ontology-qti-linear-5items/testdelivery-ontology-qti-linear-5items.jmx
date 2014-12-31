@@ -39,7 +39,7 @@
           <stringProp name="HTTPSampler.port">${__P(serverPort,80)}</stringProp>
           <stringProp name="HTTPSampler.connect_timeout"></stringProp>
           <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.protocol">${__P(serverProtocol,http)}</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path"></stringProp>
           <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
