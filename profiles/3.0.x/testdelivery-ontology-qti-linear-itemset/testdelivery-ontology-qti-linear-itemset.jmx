@@ -1,0 +1,1214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.6" jmeter="2.11 r1554548">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">${__P(loopCount,1)}</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(users,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampUpPeriod,120)}</stringProp>
+        <longProp name="ThreadGroup.start_time">1383832331000</longProp>
+        <longProp name="ThreadGroup.end_time">1383832331000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="false">
+          <boolProp name="clearEachIteration">false</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${__P(serverName,tao30be2_linode.vhost)}</stringProp>
+          <stringProp name="HTTPSampler.port">${__P(serverPort,80)}</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">${__P(serverProtocol,http)}</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">4</stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Login Screen" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/tao/Main/login (view)" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">/tao/Main/login</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://tao25.bout/taoDelivery/DeliveryServer/index</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Login Action" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/tao/Main/login (post)" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="loginForm_sent" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">loginForm_sent</stringProp>
+                  <stringProp name="Argument.value">1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="login" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">login</stringProp>
+                  <stringProp name="Argument.value">tt${__threadNum()}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="password" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">password</stringProp>
+                  <stringProp name="Argument.value">pass${__threadNum()}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="processUri" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">processUri</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="activityUri" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">activityUri</stringProp>
+                  <stringProp name="Argument.value"></stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="connect" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                  <stringProp name="Argument.name">connect</stringProp>
+                  <stringProp name="Argument.value">Log in</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+            <stringProp name="HTTPSampler.path">/tao/Main/login</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Content-Type" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">/taoDelivery/DeliveryServerAuthentification/index</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Random Gaussian Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">10000</stringProp>
+              <stringProp name="RandomTimer.range">3000</stringProp>
+            </GaussianRandomTimer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Available Tests Overview" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/taoDelivery/DeliveryServer/index" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/taoDelivery/DeliveryServer/index</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://tao25.bout/taoDelivery/DeliveryServerAuthentification/index</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">PublishedDelivery</stringProp>
+              <stringProp name="RegexExtractor.regex">/taoDelivery/DeliveryServer/initDeliveryExecution\?uri=([^&quot;]*)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">ERROR</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Random Gaussian Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">10000</stringProp>
+              <stringProp name="RandomTimer.range">3000</stringProp>
+            </GaussianRandomTimer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Take Test" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/taoDelivery/DeliveryServer/initDeliveryExecution" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="uri" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">uri</stringProp>
+                  <stringProp name="Argument.value">${PublishedDelivery}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/taoDelivery/DeliveryServer/initDeliveryExecution</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://26alphasp02.mina/taoDelivery/DeliveryServer/index</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">URL</stringProp>
+              <stringProp name="RegexExtractor.refname">DeliveryExecution</stringProp>
+              <stringProp name="RegexExtractor.regex">/taoDelivery/DeliveryServer/runDeliveryExecution\?deliveryExecution=(.*)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">ERROR</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/taoDelivery/DeliveryServer/runDeliveryExecution" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="deliveryExecution" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">deliveryExecution</stringProp>
+                  <stringProp name="Argument.value">${DeliveryExecution}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/taoDelivery/DeliveryServer/runDeliveryExecution</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://26alphasp02.mina/taoDelivery/DeliveryServer/index</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression QtiTestDefinition" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">QtiTestDefinition</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;QtiTestDefinition&quot;:&quot;([^&quot;]*)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">QtiTestDefinition_ERROR</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression QtiTestCompilation" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">QtiTestCompilation</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;QtiTestCompilation&quot;:&quot;([^&quot;]*)&quot;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">ERROR</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression serviceCallId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">testServiceCallId</stringProp>
+              <stringProp name="RegexExtractor.regex">serviceCallId=([^&quot;]+)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">ERROR</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <BSFPostProcessor guiclass="TestBeanGUI" testclass="BSFPostProcessor" testname="BSF PostProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters">${serviceCallId}</stringProp>
+              <stringProp name="script">var url = vars.get(&quot;QtiTestDefinition&quot;) + &quot;&quot;;
+url = url.replace(&quot;\\/&quot;,&quot;/&quot;);
+vars.put(&quot;QtiTestDefinition&quot;, encodeURIComponent(url));
+
+var url = vars.get(&quot;QtiTestCompilation&quot;) + &quot;&quot;;
+url = url.replace(&quot;\\/&quot;,&quot;/&quot;);
+vars.put(&quot;QtiTestCompilation&quot;, encodeURIComponent(url));</stringProp>
+              <stringProp name="scriptLanguage">javascript</stringProp>
+            </BSFPostProcessor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Test Runner" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="taoQtiTest/TestRunner/index" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="QtiTestDefinition" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">QtiTestDefinition</stringProp>
+                  <stringProp name="Argument.value">${QtiTestDefinition}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="QtiTestCompilation" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">QtiTestCompilation</stringProp>
+                  <stringProp name="Argument.value">${QtiTestCompilation}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="standalone" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">standalone</stringProp>
+                  <stringProp name="Argument.value">true</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="serviceCallId" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">serviceCallId</stringProp>
+                  <stringProp name="Argument.value">${testServiceCallId}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/taoQtiTest/TestRunner/index</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="TestPlan.comments">Unique call to test runner&apos;s index.</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">Accept-Language</stringProp>
+                  <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                </elementProp>
+                <elementProp name="Accept" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
+                  <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                </elementProp>
+                <elementProp name="User-Agent" elementType="Header">
+                  <stringProp name="Header.name">User-Agent</stringProp>
+                  <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                </elementProp>
+                <elementProp name="Referer" elementType="Header">
+                  <stringProp name="Header.name">Referer</stringProp>
+                  <stringProp name="Header.value">http://26alphasp02.mina/taoDelivery/DeliveryServer/runDeliveryExecution?uri=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383249548411079</stringProp>
+                </elementProp>
+                <elementProp name="Accept-Encoding" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression serviceCallId" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">assessmentTestContext</stringProp>
+              <stringProp name="RegexExtractor.regex">testRunner\.start\((.+)\);</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">ERROR</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="serviceCallId Definition" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="itemServiceCallId" elementType="Argument">
+                  <stringProp name="Argument.name">itemServiceCallId</stringProp>
+                  <stringProp name="Argument.value">ERROR_ITEMSERVICECALLID</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="QtiTestCompilation" elementType="Argument">
+                  <stringProp name="Argument.name">QtiTestCompilation</stringProp>
+                  <stringProp name="Argument.value">ERROR_QTITESTCOMPILATION</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="QtiTestDefinition" elementType="Argument">
+                  <stringProp name="Argument.name">QtiTestDefinition</stringProp>
+                  <stringProp name="Argument.value">ERROR_QTITESTDEFINITION</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="QtiTestParentServiceCallId" elementType="Argument">
+                  <stringProp name="Argument.name">QtiTestParentServiceCallId</stringProp>
+                  <stringProp name="Argument.value">ERROR_QTITESTPARENTSERVICECALLID</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="itemPath" elementType="Argument">
+                  <stringProp name="Argument.name">itemPath</stringProp>
+                  <stringProp name="Argument.value">ERROR_ITEMPATH</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="itemUri" elementType="Argument">
+                  <stringProp name="Argument.name">itemUri</stringProp>
+                  <stringProp name="Argument.value">ERROR_ITEMURI</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+                <elementProp name="itemDataPath" elementType="Argument">
+                  <stringProp name="Argument.name">itemDataPath</stringProp>
+                  <stringProp name="Argument.value">ERROR_ITEMDATAPATH</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </Arguments>
+            <hashTree/>
+            <BSFPostProcessor guiclass="TestBeanGUI" testclass="BSFPostProcessor" testname="BSF PostProcessor" enabled="true">
+              <stringProp name="filename"></stringProp>
+              <stringProp name="parameters">${serviceCallId}</stringProp>
+              <stringProp name="script">var definition = &apos;&apos;;
+definition += &apos;var StateStorage = function(nullVar, submitStateUrl) {};&apos;;
+definition += &apos;var UserInfoService = function(url, data) {};&apos;
+definition += &apos;var ServiceApi = function(itemCallUrl, params, itemServiceCallId, storageObject) {&apos;;
+definition += &apos;this.params = params;&apos;
+definition += &apos;this.serviceCallId = itemServiceCallId;&apos;;
+definition += &apos;};&apos;;
+
+// Instantiate polyfill ServiceStorage and ServiceApi JS prototypes.
+eval(definition);
+
+// Instantiate assessmentTestContext object.
+eval(&apos;var ctx = &apos; + vars.get(&quot;assessmentTestContext&quot;) + &apos;;&apos;);
+var serviceApiCallScript = ctx.itemServiceApiCall;
+
+// Instantiate fake serviceApi.
+var serviceApiCallCode = &apos;var serviceApi = &apos; + serviceApiCallScript + &apos;;&apos;
+eval(serviceApiCallCode);
+
+vars.put(&quot;itemServiceCallId&quot;, encodeURIComponent(serviceApi.serviceCallId));
+vars.put(&quot;itemUri&quot;, encodeURIComponent(serviceApi.params.itemUri));
+vars.put(&quot;itemPath&quot;, encodeURIComponent(serviceApi.params.itemPath));
+vars.put(&quot;itemDataPath&quot;, encodeURIComponent(serviceApi.params.itemDataPath));
+vars.put(&quot;QtiTestDefinition&quot;, encodeURIComponent(serviceApi.params.QtiTestDefinition));
+vars.put(&quot;QtiTestCompilation&quot;, encodeURIComponent(serviceApi.params.QtiTestCompilation));
+vars.put(&quot;QtiTestParentServiceCallId&quot;, encodeURIComponent(serviceApi.params.QtiTestParentServiceCallId));</stringProp>
+              <stringProp name="scriptLanguage">javascript</stringProp>
+            </BSFPostProcessor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="serviceCallId Definition" enabled="true">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="itemServiceCallId" elementType="Argument">
+              <stringProp name="Argument.name">itemServiceCallId</stringProp>
+              <stringProp name="Argument.value">Uninitialized</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+        <WhileController guiclass="WhileControllerGui" testclass="WhileController" testname="While Controller" enabled="true">
+          <stringProp name="WhileController.condition">${__javaScript(&quot;${itemServiceCallId}&quot; !=&quot;nextItemServiceCallIdERROR&quot;)}</stringProp>
+        </WhileController>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Item" enabled="true"/>
+          <hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Item Runner" enabled="true"/>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/taoQtiTest/ItemRunner/index" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="itemUri" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">itemUri</stringProp>
+                      <stringProp name="Argument.value">${itemUri}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                    <elementProp name="itemPath" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">itemPath</stringProp>
+                      <stringProp name="Argument.value">${itemPath}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                    <elementProp name="itemDataPath" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">${itemDataPath}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">itemDataPath</stringProp>
+                    </elementProp>
+                    <elementProp name="QtiTestParentServiceCallId" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">QtiTestParentServiceCallId</stringProp>
+                      <stringProp name="Argument.value">${QtiTestParentServiceCallId}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                    <elementProp name="QtiTestDefinition" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">QtiTestDefinition</stringProp>
+                      <stringProp name="Argument.value">${QtiTestDefinition}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                    <elementProp name="QtiTestCompilation" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">QtiTestCompilation</stringProp>
+                      <stringProp name="Argument.value">${QtiTestCompilation}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                    <elementProp name="standalone" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">standalone</stringProp>
+                      <stringProp name="Argument.value">true</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                    <elementProp name="serviceCallId" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">serviceCallId</stringProp>
+                      <stringProp name="Argument.value">${itemServiceCallId}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol">http</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">/taoQtiTest/ItemRunner/index</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">Accept-Language</stringProp>
+                      <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                    </elementProp>
+                    <elementProp name="User-Agent" elementType="Header">
+                      <stringProp name="Header.name">User-Agent</stringProp>
+                      <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                    </elementProp>
+                    <elementProp name="Referer" elementType="Header">
+                      <stringProp name="Header.name">Referer</stringProp>
+                      <stringProp name="Header.value">http://tao25.bout/taoQtiTest/TestRunner/index?QtiTestDefinition=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383202149871032&amp;QtiTestCompilation=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383204548111048&amp;standalone=true&amp;serviceCallId=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383249548411079</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Encoding" elementType="Header">
+                      <stringProp name="Header.name">Accept-Encoding</stringProp>
+                      <stringProp name="Header.value">gzip, deflate</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression QtiTestDefinition" enabled="true">
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">itemPath</stringProp>
+                  <stringProp name="RegexExtractor.regex">itemPath\s*:\s*&quot;.+(tao\\\/.+)&quot;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">itemPath_ERROR</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <BSFPostProcessor guiclass="TestBeanGUI" testclass="BSFPostProcessor" testname="BSF PostProcessor" enabled="true">
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters">${serviceCallId}</stringProp>
+                  <stringProp name="script">var itemPath = vars.get(&quot;itemPath&quot;);
+vars.put(&quot;itemUrl&quot;, itemPath.replace(&quot;\\/&quot;, &quot;/&quot;));</stringProp>
+                  <stringProp name="scriptLanguage">javascript</stringProp>
+                </BSFPostProcessor>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/tao/getFile.php/.../index.html" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                  <collectionProp name="Arguments.arguments"/>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol">http</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">${itemUrl}</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">Accept-Language</stringProp>
+                      <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</stringProp>
+                    </elementProp>
+                    <elementProp name="User-Agent" elementType="Header">
+                      <stringProp name="Header.name">User-Agent</stringProp>
+                      <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                    </elementProp>
+                    <elementProp name="Referer" elementType="Header">
+                      <stringProp name="Header.name">Referer</stringProp>
+                      <stringProp name="Header.value">http://tao25.bout/taoQtiTest/ItemRunner/index?itemUri=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383190571073&amp;itemPath=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383204597001041&amp;QtiTestParentServiceCallId=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383249548411079&amp;QtiTestDefinition=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383202149871032&amp;QtiTestCompilation=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383204548111048&amp;standalone=true&amp;serviceCallId=qtism527b9bafa374f4.94352431.astronomy.0</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Encoding" elementType="Header">
+                      <stringProp name="Header.name">Accept-Encoding</stringProp>
+                      <stringProp name="Header.value">gzip, deflate</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Submit Item" enabled="true"/>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/tao/ServiceModule/submitState" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="state" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                      <stringProp name="Argument.name">state</stringProp>
+                      <stringProp name="Argument.value">{ &quot;RESPONSE&quot;: { &quot;base&quot;: { &quot;identifier&quot;: &quot;choiceA&quot; } } }</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                    <elementProp name="serviceCallId" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">${itemServiceCallId}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                      <stringProp name="Argument.name">serviceCallId</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol">http</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+                <stringProp name="HTTPSampler.path">/tao/ServiceModule/submitState</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Content-Type" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/x-www-form-urlencoded; charset=UTF-8</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">Accept-Language</stringProp>
+                      <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">application/json, text/javascript, */*; q=0.01</stringProp>
+                    </elementProp>
+                    <elementProp name="User-Agent" elementType="Header">
+                      <stringProp name="Header.name">User-Agent</stringProp>
+                      <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                    </elementProp>
+                    <elementProp name="Pragma" elementType="Header">
+                      <stringProp name="Header.name">Pragma</stringProp>
+                      <stringProp name="Header.value">no-cache</stringProp>
+                    </elementProp>
+                    <elementProp name="Cache-Control" elementType="Header">
+                      <stringProp name="Header.name">Cache-Control</stringProp>
+                      <stringProp name="Header.value">no-cache</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Encoding" elementType="Header">
+                      <stringProp name="Header.name">Accept-Encoding</stringProp>
+                      <stringProp name="Header.value">gzip, deflate</stringProp>
+                    </elementProp>
+                    <elementProp name="X-Requested-With" elementType="Header">
+                      <stringProp name="Header.name">X-Requested-With</stringProp>
+                      <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                    </elementProp>
+                    <elementProp name="Referer" elementType="Header">
+                      <stringProp name="Header.name">Referer</stringProp>
+                      <stringProp name="Header.value">http://tao25.bout/taoQtiTest/TestRunner/index?QtiTestDefinition=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383202149871032&amp;QtiTestCompilation=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383204548111048&amp;standalone=true&amp;serviceCallId=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383249548411079</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+                <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Gaussian Random Timer" enabled="true">
+                  <stringProp name="ConstantTimer.delay">60000</stringProp>
+                  <stringProp name="RandomTimer.range">15000</stringProp>
+                </GaussianRandomTimer>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/taoQtiTest/TestRunner/storeItemVariableSet" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">{ &quot;RESPONSE&quot;: { &quot;base&quot;: { &quot;identifier&quot;: &quot;choiceA&quot; } } }</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol">http</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+                <stringProp name="HTTPSampler.path">/taoQtiTest/TestRunner/storeItemVariableSet?QtiTestDefinition=${QtiTestDefinition}&amp;QtiTestCompilation=${QtiTestCompilation}&amp;itemDataPath=${itemDataPath}&amp;serviceCallId=${testServiceCallId}</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Content-Type" elementType="Header">
+                      <stringProp name="Header.name">Content-Type</stringProp>
+                      <stringProp name="Header.value">application/json; charset=UTF-8</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">Accept-Language</stringProp>
+                      <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">application/json, text/javascript, */*; q=0.01</stringProp>
+                    </elementProp>
+                    <elementProp name="User-Agent" elementType="Header">
+                      <stringProp name="Header.name">User-Agent</stringProp>
+                      <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                    </elementProp>
+                    <elementProp name="Pragma" elementType="Header">
+                      <stringProp name="Header.name">Pragma</stringProp>
+                      <stringProp name="Header.value">no-cache</stringProp>
+                    </elementProp>
+                    <elementProp name="Cache-Control" elementType="Header">
+                      <stringProp name="Header.name">Cache-Control</stringProp>
+                      <stringProp name="Header.value">no-cache</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Encoding" elementType="Header">
+                      <stringProp name="Header.name">Accept-Encoding</stringProp>
+                      <stringProp name="Header.value">gzip, deflate</stringProp>
+                    </elementProp>
+                    <elementProp name="X-Requested-With" elementType="Header">
+                      <stringProp name="Header.name">X-Requested-With</stringProp>
+                      <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                    </elementProp>
+                    <elementProp name="Referer" elementType="Header">
+                      <stringProp name="Header.name">Referer</stringProp>
+                      <stringProp name="Header.value">http://tao25.bout/taoQtiTest/ItemRunner/index?itemUri=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383190571073&amp;itemPath=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383204597001041&amp;QtiTestParentServiceCallId=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383249548411079&amp;QtiTestDefinition=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383202149871032&amp;QtiTestCompilation=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383204548111048&amp;standalone=true&amp;serviceCallId=qtism527b9bafa374f4.94352431.astronomy.0</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+              </hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="/taoQtiTest/TestRunner/moveForward" enabled="true">
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="QtiTestDefinition" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">QtiTestDefinition</stringProp>
+                      <stringProp name="Argument.value">${QtiTestDefinition}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                    <elementProp name="QtiTestCompilation" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">QtiTestCompilation</stringProp>
+                      <stringProp name="Argument.value">${QtiTestCompilation}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                    <elementProp name="standalone" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">standalone</stringProp>
+                      <stringProp name="Argument.value">true</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                    <elementProp name="serviceCallId" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.name">serviceCallId</stringProp>
+                      <stringProp name="Argument.value">${testServiceCallId}</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                      <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol">http</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">/taoQtiTest/TestRunner/moveForward</stringProp>
+                <stringProp name="HTTPSampler.method">GET</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">Accept-Language</stringProp>
+                      <stringProp name="Header.value">en-US,en;q=0.5</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept" elementType="Header">
+                      <stringProp name="Header.name">Accept</stringProp>
+                      <stringProp name="Header.value">application/json, text/javascript, */*; q=0.01</stringProp>
+                    </elementProp>
+                    <elementProp name="User-Agent" elementType="Header">
+                      <stringProp name="Header.name">User-Agent</stringProp>
+                      <stringProp name="Header.value">Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:25.0) Gecko/20100101 Firefox/25.0</stringProp>
+                    </elementProp>
+                    <elementProp name="Referer" elementType="Header">
+                      <stringProp name="Header.name">Referer</stringProp>
+                      <stringProp name="Header.value">http://tao25.bout/taoQtiTest/TestRunner/index?QtiTestDefinition=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383202149871032&amp;QtiTestCompilation=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383204548111048&amp;standalone=true&amp;serviceCallId=http%3A%2F%2Ftao.local%2Fmy_tao25.rdf%23i138383249548411079</stringProp>
+                    </elementProp>
+                    <elementProp name="X-Requested-With" elementType="Header">
+                      <stringProp name="Header.name">X-Requested-With</stringProp>
+                      <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Encoding" elementType="Header">
+                      <stringProp name="Header.name">Accept-Encoding</stringProp>
+                      <stringProp name="Header.value">gzip, deflate</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression itemServiceCallId" enabled="true">
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">itemServiceCallId</stringProp>
+                  <stringProp name="RegexExtractor.regex">serviceCallId=(.*?)\\&quot;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">nextItemServiceCallIdERROR</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression itemUri" enabled="true">
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">itemUri</stringProp>
+                  <stringProp name="RegexExtractor.regex">&quot;itemUri\\&quot;:\\&quot;(.*?)\\&quot;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">itemUriERROR</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression itemPath" enabled="true">
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">itemPath</stringProp>
+                  <stringProp name="RegexExtractor.regex">&quot;itemPath\\&quot;:\\&quot;(.*?)\\&quot;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">itemPathERROR</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression itemDataPath" enabled="true">
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">itemDataPath</stringProp>
+                  <stringProp name="RegexExtractor.regex">&quot;itemDataPath\\&quot;:\\&quot;(.*?)\\&quot;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">itemDataPathERROR</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <BSFPostProcessor guiclass="TestBeanGUI" testclass="BSFPostProcessor" testname="BSF PostProcessor" enabled="true">
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="script">var url = vars.get(&quot;itemUri&quot;) + &quot;&quot;;
+url = url.replace(/\\\\\\\//g,&quot;/&quot;);
+vars.put(&quot;itemUri&quot;, encodeURIComponent(url));
+
+var url = vars.get(&quot;itemPath&quot;) + &quot;&quot;;
+url = url.replace(/\\\\\\\//g,&quot;/&quot;);
+vars.put(&quot;itemPath&quot;, encodeURIComponent(url));
+
+var url = vars.get(&quot;itemDataPath&quot;) + &quot;&quot;;
+url = url.replace(/\\\\\\\//g,&quot;/&quot;);
+vars.put(&quot;itemDataPath&quot;, encodeURIComponent(url));
+
+var url = vars.get(&quot;itemServiceCallId&quot;) + &quot;&quot;;
+vars.put(&quot;itemServiceCallId&quot;, encodeURIComponent(url));</stringProp>
+                  <stringProp name="scriptLanguage">javascript</stringProp>
+                </BSFPostProcessor>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Finish" enabled="true"/>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="taoDelivery/DeliveryServer/finishDeliveryExecution" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="deliveryExecution" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${DeliveryExecution}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">deliveryExecution</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/taoDelivery/DeliveryServer/finishDeliveryExecution</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>false</message>
+              <threadName>true</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>false</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="false">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>false</message>
+              <threadName>true</threadName>
+              <dataType>false</dataType>
+              <encoding>false</encoding>
+              <assertions>false</assertions>
+              <subresults>false</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <hostname>true</hostname>
+              <threadCounts>true</threadCounts>
+              <sampleCount>true</sampleCount>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
